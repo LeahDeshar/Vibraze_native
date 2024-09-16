@@ -15,8 +15,8 @@ import { StatusBar } from "expo-status-bar";
 const App = () => {
   return (
     <SafeAreaProvider>
-      <RootLayout />
       <StatusBar style="auto" />
+      <RootLayout />
     </SafeAreaProvider>
   );
 };

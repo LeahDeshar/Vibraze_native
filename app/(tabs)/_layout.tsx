@@ -42,37 +42,40 @@ export default function TabLayout() {
       <Tabs.Screen
         name="favorites"
         options={{
-          title: "favorites",
+          title: "Favorites",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
+            <TabBarIcon name={focused ? "heart" : "heart"} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="playlists"
         options={{
-          title: "playlists",
+          title: "Playlists",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
+              name={"playlist-play"}
+              iconType="materialicon"
               color={color}
             />
           ),
         }}
       />
-      <Tabs.Screen name="(songs)" />
+      <Tabs.Screen
+        name="(songs)"
+        options={{
+          title: "Songs",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={"musical-notes-sharp"} color={color} />
+          ),
+        }}
+      />
       <Tabs.Screen
         name="artists"
         options={{
-          title: "artists",
+          title: "Artists",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
-              color={color}
-            />
+            <TabBarIcon name={"people-sharp"} color={color} />
           ),
         }}
       />
