@@ -2,8 +2,10 @@ import { Tabs } from "expo-router";
 import React from "react";
 
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
-import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { colors, fontSize } from "@/constants/tokens";
+import { BlurView } from "expo-blur";
+import { StyleSheet } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -11,14 +13,36 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
+        tabBarActiveTintColor: colors.primary,
+        tabBarLabelStyle: {
+          fontSize: fontSize.xs,
+          fontWeight: "500",
+        },
         headerShown: false,
+        tabBarStyle: {
+          position: "absolute",
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          borderTopWidth: 0,
+          paddingTop: 8,
+        },
+        tabBarBackground: () => (
+          <BlurView
+            intensity={95}
+            style={{
+              ...StyleSheet.absoluteFillObject,
+              overflow: "hidden",
+              borderTopLeftRadius: 20,
+              borderTopRightRadius: 20,
+            }}
+          />
+        ),
       }}
     >
       <Tabs.Screen
         name="favorites"
         options={{
-          title: "Home",
+          title: "favorites",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "home" : "home-outline"}
@@ -30,7 +54,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="playlists"
         options={{
-          title: "Explore",
+          title: "playlists",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "code-slash" : "code-slash-outline"}
@@ -43,7 +67,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="artists"
         options={{
-          title: "Artists",
+          title: "artists",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "code-slash" : "code-slash-outline"}
