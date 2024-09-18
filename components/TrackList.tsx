@@ -1,8 +1,24 @@
-import { View, Text, FlatList } from "react-native";
-import React from "react";
+import { View, Text, FlatList, FlatListProps } from "react-native";
+import library from "@/assets/data/library.json";
+import TrackListItem from "./TrackListItem";
+// import { TrackListItem } from "./TrackListItem";
 
-const TrackList = () => {
-  return <FlatList data={[]} renderItem={() => null} />;
+export type TrackListProps = Partial<FlatListProps<unknown>>;
+const TrackList = ({ ...flatlistProps }: TrackListProps) => {
+  return (
+    <FlatList
+      data={library}
+      renderItem={({ item: track }) => (
+        <TrackListItem
+          track={{
+            ...track,
+            image: track.artwork,
+          }}
+        />
+      )}
+      {...flatlistProps}
+    />
+  );
 };
 
 export default TrackList;
