@@ -1,7 +1,7 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { defaultStyles } from "@/styles";
-import { TrackList } from "@/components/TrackList";
+import TrackList from "@/components/TrackList";
 
 const SongsScreen = () => {
   return (
