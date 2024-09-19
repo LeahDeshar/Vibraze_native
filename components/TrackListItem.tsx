@@ -94,13 +94,15 @@ import React from "react";
 import { unknownTrackImageUri } from "@/constants/images";
 import { colors, fontSize } from "@/constants/tokens";
 import { defaultStyles } from "@/styles";
+import { Track } from "react-native-track-player";
 
 export type TrackListItemProps = {
-  track: {
-    title: string;
-    image?: string;
-    artist?: string;
-  };
+  track: Track;
+  // {
+  //   title: string;
+  //   image?: string;
+  //   artist?: string;
+  // };
 };
 
 const TrackListItem = ({ track }: TrackListItemProps) => {
@@ -112,7 +114,7 @@ const TrackListItem = ({ track }: TrackListItemProps) => {
         <View>
           <Image
             source={{
-              uri: track.image ?? unknownTrackImageUri,
+              uri: track.artwork ?? unknownTrackImageUri,
             }}
             style={{
               ...styles.trackArtworkImage,
