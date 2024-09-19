@@ -1,10 +1,23 @@
 import { View, Text, ScrollView } from "react-native";
-import React from "react";
+import React, { useMemo } from "react";
 import { defaultStyles } from "@/styles";
 import TrackList from "@/components/TrackList";
 import { screenPadding } from "@/constants/tokens";
-
+import { useNavigationSearch } from "@/hooks/useNavigationSearch";
+import library from "@/assets/data/library.json";
+import { tractTitleFilter } from "@/helper/filter";
 const SongsScreen = () => {
+  const search = useNavigationSearch({
+    searchBarOptions: {
+      placeholder: "Find in songs",
+    },
+  });
+
+  const filteredTracks = useMemo(() => {
+    if (!search) return library;
+
+    return library.filter(tractTitleFilter(search));
+  }, [search]);
   return (
     <View style={defaultStyles.container}>
       <ScrollView
@@ -13,7 +26,7 @@ const SongsScreen = () => {
         }}
         contentInsetAdjustmentBehavior="automatic"
       >
-        <TrackList scrollEnabled={false} />
+        <TrackList tracks={filteredTracks} scrollEnabled={false} />
       </ScrollView>
     </View>
   );
