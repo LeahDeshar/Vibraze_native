@@ -9,19 +9,15 @@ import React from "react";
 import { unknownTrackImageUri } from "@/constants/images";
 import { colors, fontSize } from "@/constants/tokens";
 import { defaultStyles } from "@/styles";
-import { Track } from "react-native-track-player";
+import { Track, useActiveTrack } from "react-native-track-player";
 
 export type TrackListItemProps = {
   track: Track;
-  // {
-  //   title: string;
-  //   image?: string;
-  //   artist?: string;
-  // };
 };
 
 const TrackListItem = ({ track }: TrackListItemProps) => {
-  const isActiveTrack = false;
+  const isActiveTrack = useActiveTrack()?.url === track.url;
+  // const isActiveTrack = false;
   return (
     <TouchableHighlight>
       <View style={styles.trackItemContainer}>
