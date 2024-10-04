@@ -3,6 +3,7 @@
     "name": "musicapp",
     "slug": "musicapp",
     "version": "1.0.0",
+    "runtimeVersion": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -44,9 +45,7 @@
       }
     },
     "owner": "leahexpo1234",
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+
     "updates": {
       "url": "https://u.expo.dev/24f57ede-3412-419d-be45-ab6cf7c525a3"
     }
