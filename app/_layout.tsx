@@ -14,6 +14,10 @@ import { StatusBar } from "expo-status-bar";
 import { useSetupTrackPlayer } from "@/hooks/useSetupTrackPlayer";
 import { useCallback } from "react";
 import { useLogTrackPlayerState } from "@/hooks/useLogTrackPlayerState";
+import TrackPlayer from "react-native-track-player";
+import { service } from "@/helper/service";
+// Register the playback service
+// TrackPlayer.registerPlaybackService(() => service);
 
 SplashScreen.preventAutoHideAsync();
 
